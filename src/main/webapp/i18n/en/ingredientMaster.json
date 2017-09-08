@@ -1,0 +1,23 @@
+{
+    "coolcookApp": {
+        "ingredientMaster" : {
+            "home": {
+                "title": "Ingredient Masters",
+                "createLabel": "Create a new Ingredient Master",
+                "createOrEditLabel": "Create or edit a Ingredient Master"
+            },
+            "created": "A new Ingredient Master is created with identifier {{ param }}",
+            "updated": "A Ingredient Master is updated with identifier {{ param }}",
+            "deleted": "A Ingredient Master is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Ingredient Master {{ id }}?"
+            },
+            "detail": {
+                "title": "Ingredient Master"
+            },
+            "ingredientId": "Ingredient Id",
+            "name": "Name",
+            "image": "Image"
+        }
+    }
+}

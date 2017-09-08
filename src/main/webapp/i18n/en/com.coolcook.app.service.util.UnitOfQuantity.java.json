@@ -1,0 +1,14 @@
+{
+    "coolcookApp": {
+        "Com.coolcook.app.service.util.UnitOfQuantity.java" : {
+            "null": "",
+            "KILOGRAM": "KILOGRAM",
+            "GRAM": "GRAM",
+            "LITRE": "LITRE",
+            "CUP": "CUP",
+            "TEA_SPOON": "TEA_SPOON",
+            "TABLE_SPOON": "TABLE_SPOON",
+            "PIECE": "PIECE"
+        }
+    }
+}

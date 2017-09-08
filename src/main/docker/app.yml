@@ -1,0 +1,14 @@
+version: '2'
+services:
+    coolcook-app:
+        image: coolcook
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://coolcook-mysql:3306/coolcook?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    coolcook-mysql:
+        extends:
+            file: mysql.yml
+            service: coolcook-mysql
