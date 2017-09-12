@@ -7,6 +7,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.coolcook.app.domain.enumeration.UnitOfQuantity;
+
 /**
  * A IngredientMaster.
  */
@@ -21,9 +23,6 @@ public class IngredientMaster implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "ingredient_id")
-    private Integer ingredientId;
-
     @Column(name = "name")
     private String name;
 
@@ -34,25 +33,22 @@ public class IngredientMaster implements Serializable {
     @Column(name = "image_content_type")
     private String imageContentType;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "unit")
+    private UnitOfQuantity unit;
+
+    @Column(name = "default_qty")
+    private Double defaultQty;
+
+    @ManyToOne
+    private Category catagory;
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Integer getIngredientId() {
-        return ingredientId;
-    }
-
-    public IngredientMaster ingredientId(Integer ingredientId) {
-        this.ingredientId = ingredientId;
-        return this;
-    }
-
-    public void setIngredientId(Integer ingredientId) {
-        this.ingredientId = ingredientId;
     }
 
     public String getName() {
@@ -94,6 +90,45 @@ public class IngredientMaster implements Serializable {
         this.imageContentType = imageContentType;
     }
 
+    public UnitOfQuantity getUnit() {
+        return unit;
+    }
+
+    public IngredientMaster unit(UnitOfQuantity unit) {
+        this.unit = unit;
+        return this;
+    }
+
+    public void setUnit(UnitOfQuantity unit) {
+        this.unit = unit;
+    }
+
+    public Double getDefaultQty() {
+        return defaultQty;
+    }
+
+    public IngredientMaster defaultQty(Double defaultQty) {
+        this.defaultQty = defaultQty;
+        return this;
+    }
+
+    public void setDefaultQty(Double defaultQty) {
+        this.defaultQty = defaultQty;
+    }
+
+    public Category getCatagory() {
+        return catagory;
+    }
+
+    public IngredientMaster catagory(Category category) {
+        this.catagory = category;
+        return this;
+    }
+
+    public void setCatagory(Category category) {
+        this.catagory = category;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -118,10 +153,11 @@ public class IngredientMaster implements Serializable {
     public String toString() {
         return "IngredientMaster{" +
             "id=" + getId() +
-            ", ingredientId='" + getIngredientId() + "'" +
             ", name='" + getName() + "'" +
             ", image='" + getImage() + "'" +
             ", imageContentType='" + imageContentType + "'" +
+            ", unit='" + getUnit() + "'" +
+            ", defaultQty='" + getDefaultQty() + "'" +
             "}";
     }
 }

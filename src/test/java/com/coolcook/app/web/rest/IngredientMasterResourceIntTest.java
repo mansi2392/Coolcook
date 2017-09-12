@@ -5,6 +5,8 @@ import com.coolcook.app.CoolcookApp;
 import com.coolcook.app.domain.IngredientMaster;
 import com.coolcook.app.repository.IngredientMasterRepository;
 import com.coolcook.app.service.IngredientMasterService;
+import com.coolcook.app.service.dto.IngredientMasterDTO;
+import com.coolcook.app.service.mapper.IngredientMasterMapper;
 import com.coolcook.app.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
@@ -30,6 +32,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import com.coolcook.app.domain.enumeration.UnitOfQuantity;
 /**
  * Test class for the IngredientMasterResource REST controller.
  *
@@ -39,9 +42,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = CoolcookApp.class)
 public class IngredientMasterResourceIntTest {
 
-    private static final Integer DEFAULT_INGREDIENT_ID = 1;
-    private static final Integer UPDATED_INGREDIENT_ID = 2;
-
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
@@ -50,8 +50,17 @@ public class IngredientMasterResourceIntTest {
     private static final String DEFAULT_IMAGE_CONTENT_TYPE = "image/jpg";
     private static final String UPDATED_IMAGE_CONTENT_TYPE = "image/png";
 
+    private static final UnitOfQuantity DEFAULT_UNIT = UnitOfQuantity.KILOGRAM;
+    private static final UnitOfQuantity UPDATED_UNIT = UnitOfQuantity.GRAM;
+
+    private static final Double DEFAULT_DEFAULT_QTY = 1D;
+    private static final Double UPDATED_DEFAULT_QTY = 2D;
+
     @Autowired
     private IngredientMasterRepository ingredientMasterRepository;
+
+    @Autowired
+    private IngredientMasterMapper ingredientMasterMapper;
 
     @Autowired
     private IngredientMasterService ingredientMasterService;
@@ -90,10 +99,11 @@ public class IngredientMasterResourceIntTest {
      */
     public static IngredientMaster createEntity(EntityManager em) {
         IngredientMaster ingredientMaster = new IngredientMaster()
-            .ingredientId(DEFAULT_INGREDIENT_ID)
             .name(DEFAULT_NAME)
             .image(DEFAULT_IMAGE)
-            .imageContentType(DEFAULT_IMAGE_CONTENT_TYPE);
+            .imageContentType(DEFAULT_IMAGE_CONTENT_TYPE)
+            .unit(DEFAULT_UNIT)
+            .defaultQty(DEFAULT_DEFAULT_QTY);
         return ingredientMaster;
     }
 
@@ -108,19 +118,21 @@ public class IngredientMasterResourceIntTest {
         int databaseSizeBeforeCreate = ingredientMasterRepository.findAll().size();
 
         // Create the IngredientMaster
+        IngredientMasterDTO ingredientMasterDTO = ingredientMasterMapper.toDto(ingredientMaster);
         restIngredientMasterMockMvc.perform(post("/api/ingredient-masters")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(ingredientMaster)))
+            .content(TestUtil.convertObjectToJsonBytes(ingredientMasterDTO)))
             .andExpect(status().isCreated());
 
         // Validate the IngredientMaster in the database
         List<IngredientMaster> ingredientMasterList = ingredientMasterRepository.findAll();
         assertThat(ingredientMasterList).hasSize(databaseSizeBeforeCreate + 1);
         IngredientMaster testIngredientMaster = ingredientMasterList.get(ingredientMasterList.size() - 1);
-        assertThat(testIngredientMaster.getIngredientId()).isEqualTo(DEFAULT_INGREDIENT_ID);
         assertThat(testIngredientMaster.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testIngredientMaster.getImage()).isEqualTo(DEFAULT_IMAGE);
         assertThat(testIngredientMaster.getImageContentType()).isEqualTo(DEFAULT_IMAGE_CONTENT_TYPE);
+        assertThat(testIngredientMaster.getUnit()).isEqualTo(DEFAULT_UNIT);
+        assertThat(testIngredientMaster.getDefaultQty()).isEqualTo(DEFAULT_DEFAULT_QTY);
     }
 
     @Test
@@ -130,11 +142,12 @@ public class IngredientMasterResourceIntTest {
 
         // Create the IngredientMaster with an existing ID
         ingredientMaster.setId(1L);
+        IngredientMasterDTO ingredientMasterDTO = ingredientMasterMapper.toDto(ingredientMaster);
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restIngredientMasterMockMvc.perform(post("/api/ingredient-masters")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(ingredientMaster)))
+            .content(TestUtil.convertObjectToJsonBytes(ingredientMasterDTO)))
             .andExpect(status().isBadRequest());
 
         // Validate the Alice in the database
@@ -153,10 +166,11 @@ public class IngredientMasterResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(ingredientMaster.getId().intValue())))
-            .andExpect(jsonPath("$.[*].ingredientId").value(hasItem(DEFAULT_INGREDIENT_ID)))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
             .andExpect(jsonPath("$.[*].imageContentType").value(hasItem(DEFAULT_IMAGE_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].image").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE))));
+            .andExpect(jsonPath("$.[*].image").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE))))
+            .andExpect(jsonPath("$.[*].unit").value(hasItem(DEFAULT_UNIT.toString())))
+            .andExpect(jsonPath("$.[*].defaultQty").value(hasItem(DEFAULT_DEFAULT_QTY.doubleValue())));
     }
 
     @Test
@@ -170,10 +184,11 @@ public class IngredientMasterResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(ingredientMaster.getId().intValue()))
-            .andExpect(jsonPath("$.ingredientId").value(DEFAULT_INGREDIENT_ID))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.imageContentType").value(DEFAULT_IMAGE_CONTENT_TYPE))
-            .andExpect(jsonPath("$.image").value(Base64Utils.encodeToString(DEFAULT_IMAGE)));
+            .andExpect(jsonPath("$.image").value(Base64Utils.encodeToString(DEFAULT_IMAGE)))
+            .andExpect(jsonPath("$.unit").value(DEFAULT_UNIT.toString()))
+            .andExpect(jsonPath("$.defaultQty").value(DEFAULT_DEFAULT_QTY.doubleValue()));
     }
 
     @Test
@@ -188,31 +203,33 @@ public class IngredientMasterResourceIntTest {
     @Transactional
     public void updateIngredientMaster() throws Exception {
         // Initialize the database
-        ingredientMasterService.save(ingredientMaster);
-
+        ingredientMasterRepository.saveAndFlush(ingredientMaster);
         int databaseSizeBeforeUpdate = ingredientMasterRepository.findAll().size();
 
         // Update the ingredientMaster
         IngredientMaster updatedIngredientMaster = ingredientMasterRepository.findOne(ingredientMaster.getId());
         updatedIngredientMaster
-            .ingredientId(UPDATED_INGREDIENT_ID)
             .name(UPDATED_NAME)
             .image(UPDATED_IMAGE)
-            .imageContentType(UPDATED_IMAGE_CONTENT_TYPE);
+            .imageContentType(UPDATED_IMAGE_CONTENT_TYPE)
+            .unit(UPDATED_UNIT)
+            .defaultQty(UPDATED_DEFAULT_QTY);
+        IngredientMasterDTO ingredientMasterDTO = ingredientMasterMapper.toDto(updatedIngredientMaster);
 
         restIngredientMasterMockMvc.perform(put("/api/ingredient-masters")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(updatedIngredientMaster)))
+            .content(TestUtil.convertObjectToJsonBytes(ingredientMasterDTO)))
             .andExpect(status().isOk());
 
         // Validate the IngredientMaster in the database
         List<IngredientMaster> ingredientMasterList = ingredientMasterRepository.findAll();
         assertThat(ingredientMasterList).hasSize(databaseSizeBeforeUpdate);
         IngredientMaster testIngredientMaster = ingredientMasterList.get(ingredientMasterList.size() - 1);
-        assertThat(testIngredientMaster.getIngredientId()).isEqualTo(UPDATED_INGREDIENT_ID);
         assertThat(testIngredientMaster.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testIngredientMaster.getImage()).isEqualTo(UPDATED_IMAGE);
         assertThat(testIngredientMaster.getImageContentType()).isEqualTo(UPDATED_IMAGE_CONTENT_TYPE);
+        assertThat(testIngredientMaster.getUnit()).isEqualTo(UPDATED_UNIT);
+        assertThat(testIngredientMaster.getDefaultQty()).isEqualTo(UPDATED_DEFAULT_QTY);
     }
 
     @Test
@@ -221,11 +238,12 @@ public class IngredientMasterResourceIntTest {
         int databaseSizeBeforeUpdate = ingredientMasterRepository.findAll().size();
 
         // Create the IngredientMaster
+        IngredientMasterDTO ingredientMasterDTO = ingredientMasterMapper.toDto(ingredientMaster);
 
         // If the entity doesn't have an ID, it will be created instead of just being updated
         restIngredientMasterMockMvc.perform(put("/api/ingredient-masters")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(ingredientMaster)))
+            .content(TestUtil.convertObjectToJsonBytes(ingredientMasterDTO)))
             .andExpect(status().isCreated());
 
         // Validate the IngredientMaster in the database
@@ -237,8 +255,7 @@ public class IngredientMasterResourceIntTest {
     @Transactional
     public void deleteIngredientMaster() throws Exception {
         // Initialize the database
-        ingredientMasterService.save(ingredientMaster);
-
+        ingredientMasterRepository.saveAndFlush(ingredientMaster);
         int databaseSizeBeforeDelete = ingredientMasterRepository.findAll().size();
 
         // Get the ingredientMaster
@@ -264,5 +281,28 @@ public class IngredientMasterResourceIntTest {
         assertThat(ingredientMaster1).isNotEqualTo(ingredientMaster2);
         ingredientMaster1.setId(null);
         assertThat(ingredientMaster1).isNotEqualTo(ingredientMaster2);
+    }
+
+    @Test
+    @Transactional
+    public void dtoEqualsVerifier() throws Exception {
+        TestUtil.equalsVerifier(IngredientMasterDTO.class);
+        IngredientMasterDTO ingredientMasterDTO1 = new IngredientMasterDTO();
+        ingredientMasterDTO1.setId(1L);
+        IngredientMasterDTO ingredientMasterDTO2 = new IngredientMasterDTO();
+        assertThat(ingredientMasterDTO1).isNotEqualTo(ingredientMasterDTO2);
+        ingredientMasterDTO2.setId(ingredientMasterDTO1.getId());
+        assertThat(ingredientMasterDTO1).isEqualTo(ingredientMasterDTO2);
+        ingredientMasterDTO2.setId(2L);
+        assertThat(ingredientMasterDTO1).isNotEqualTo(ingredientMasterDTO2);
+        ingredientMasterDTO1.setId(null);
+        assertThat(ingredientMasterDTO1).isNotEqualTo(ingredientMasterDTO2);
+    }
+
+    @Test
+    @Transactional
+    public void testEntityFromId() {
+        assertThat(ingredientMasterMapper.fromId(42L).getId()).isEqualTo(42);
+        assertThat(ingredientMasterMapper.fromId(null)).isNull();
     }
 }

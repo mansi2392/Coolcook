@@ -3,6 +3,8 @@ package com.coolcook.app.service.impl;
 import com.coolcook.app.service.IngredientMasterService;
 import com.coolcook.app.domain.IngredientMaster;
 import com.coolcook.app.repository.IngredientMasterRepository;
+import com.coolcook.app.service.dto.IngredientMasterDTO;
+import com.coolcook.app.service.mapper.IngredientMasterMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -22,20 +24,25 @@ public class IngredientMasterServiceImpl implements IngredientMasterService{
 
     private final IngredientMasterRepository ingredientMasterRepository;
 
-    public IngredientMasterServiceImpl(IngredientMasterRepository ingredientMasterRepository) {
+    private final IngredientMasterMapper ingredientMasterMapper;
+
+    public IngredientMasterServiceImpl(IngredientMasterRepository ingredientMasterRepository, IngredientMasterMapper ingredientMasterMapper) {
         this.ingredientMasterRepository = ingredientMasterRepository;
+        this.ingredientMasterMapper = ingredientMasterMapper;
     }
 
     /**
      * Save a ingredientMaster.
      *
-     * @param ingredientMaster the entity to save
+     * @param ingredientMasterDTO the entity to save
      * @return the persisted entity
      */
     @Override
-    public IngredientMaster save(IngredientMaster ingredientMaster) {
-        log.debug("Request to save IngredientMaster : {}", ingredientMaster);
-        return ingredientMasterRepository.save(ingredientMaster);
+    public IngredientMasterDTO save(IngredientMasterDTO ingredientMasterDTO) {
+        log.debug("Request to save IngredientMaster : {}", ingredientMasterDTO);
+        IngredientMaster ingredientMaster = ingredientMasterMapper.toEntity(ingredientMasterDTO);
+        ingredientMaster = ingredientMasterRepository.save(ingredientMaster);
+        return ingredientMasterMapper.toDto(ingredientMaster);
     }
 
     /**
@@ -46,9 +53,10 @@ public class IngredientMasterServiceImpl implements IngredientMasterService{
      */
     @Override
     @Transactional(readOnly = true)
-    public Page<IngredientMaster> findAll(Pageable pageable) {
+    public Page<IngredientMasterDTO> findAll(Pageable pageable) {
         log.debug("Request to get all IngredientMasters");
-        return ingredientMasterRepository.findAll(pageable);
+        return ingredientMasterRepository.findAll(pageable)
+            .map(ingredientMasterMapper::toDto);
     }
 
     /**
@@ -59,9 +67,10 @@ public class IngredientMasterServiceImpl implements IngredientMasterService{
      */
     @Override
     @Transactional(readOnly = true)
-    public IngredientMaster findOne(Long id) {
+    public IngredientMasterDTO findOne(Long id) {
         log.debug("Request to get IngredientMaster : {}", id);
-        return ingredientMasterRepository.findOne(id);
+        IngredientMaster ingredientMaster = ingredientMasterRepository.findOne(id);
+        return ingredientMasterMapper.toDto(ingredientMaster);
     }
 
     /**

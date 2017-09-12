@@ -8,6 +8,12 @@
             "entities": {
                 "main": "Entities",
                 "ingredientMaster": "Ingredient Master",
+                "ingredientMasterMySuffix": "Ingredient Master",
+                "ingredientAtHomeMySuffix": "Ingredient At Home",
+                "categoryMySuffix": "Category",
+                "quantityMySuffix": "Quantity",
+                "recipeMasterMySuffix": "Recipe Master",
+                "ingredientQtyMappingMySuffix": "Ingredient Qty Mapping",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

@@ -1,6 +1,6 @@
 package com.coolcook.app.service;
 
-import com.coolcook.app.domain.IngredientMaster;
+import com.coolcook.app.service.dto.IngredientMasterDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -12,10 +12,10 @@ public interface IngredientMasterService {
     /**
      * Save a ingredientMaster.
      *
-     * @param ingredientMaster the entity to save
+     * @param ingredientMasterDTO the entity to save
      * @return the persisted entity
      */
-    IngredientMaster save(IngredientMaster ingredientMaster);
+    IngredientMasterDTO save(IngredientMasterDTO ingredientMasterDTO);
 
     /**
      *  Get all the ingredientMasters.
@@ -23,7 +23,7 @@ public interface IngredientMasterService {
      *  @param pageable the pagination information
      *  @return the list of entities
      */
-    Page<IngredientMaster> findAll(Pageable pageable);
+    Page<IngredientMasterDTO> findAll(Pageable pageable);
 
     /**
      *  Get the "id" ingredientMaster.
@@ -31,7 +31,7 @@ public interface IngredientMasterService {
      *  @param id the id of the entity
      *  @return the entity
      */
-    IngredientMaster findOne(Long id);
+    IngredientMasterDTO findOne(Long id);
 
     /**
      *  Delete the "id" ingredientMaster.

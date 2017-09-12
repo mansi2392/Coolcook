@@ -1,0 +1,24 @@
+{
+    "coolcookApp": {
+        "ingredientAtHome" : {
+            "home": {
+                "title": "Ingredient At Homes",
+                "createLabel": "Create a new Ingredient At Home",
+                "createOrEditLabel": "Create or edit a Ingredient At Home"
+            },
+            "created": "A new Ingredient At Home is created with identifier {{ param }}",
+            "updated": "A Ingredient At Home is updated with identifier {{ param }}",
+            "deleted": "A Ingredient At Home is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Ingredient At Home {{ id }}?"
+            },
+            "detail": {
+                "title": "Ingredient At Home"
+            },
+            "createdAt": "Created At",
+            "updatedAt": "Updated At",
+            "expiryDate": "Expiry Date",
+            "ingredientQtyMap": "Ingredient Qty Map"
+        }
+    }
+}

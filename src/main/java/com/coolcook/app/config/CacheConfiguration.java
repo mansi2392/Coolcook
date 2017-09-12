@@ -43,6 +43,19 @@ public class CacheConfiguration {
             cm.createCache(com.coolcook.app.domain.PersistentToken.class.getName(), jcacheConfiguration);
             cm.createCache(com.coolcook.app.domain.User.class.getName() + ".persistentTokens", jcacheConfiguration);
             cm.createCache(com.coolcook.app.domain.IngredientMaster.class.getName(), jcacheConfiguration);
+            cm.createCache(com.coolcook.app.domain.IngredientAtHome.class.getName(), jcacheConfiguration);
+            cm.createCache(com.coolcook.app.domain.IngredientAtHome.class.getName() + ".ingredientQtyMaps", jcacheConfiguration);
+            cm.createCache(com.coolcook.app.domain.Category.class.getName(), jcacheConfiguration);
+            cm.createCache(com.coolcook.app.domain.Quantity.class.getName(), jcacheConfiguration);
+            cm.createCache(com.coolcook.app.domain.RecipeMaster.class.getName(), jcacheConfiguration);
+            cm.createCache(com.coolcook.app.domain.RecipeMaster.class.getName() + ".ingredientQtyMaps", jcacheConfiguration);
+            cm.createCache(com.coolcook.app.domain.IngredientQtyMapping.class.getName(), jcacheConfiguration);
+            cm.createCache(com.coolcook.app.domain.IngredientQtyMapping.class.getName() + ".ingredients", jcacheConfiguration);
+            cm.createCache(com.coolcook.app.domain.IngredientQtyMapping.class.getName() + ".qties", jcacheConfiguration);
+            cm.createCache(com.coolcook.app.domain.IngredientMaster.class.getName() + ".", jcacheConfiguration);
+            cm.createCache(com.coolcook.app.domain.Quantity.class.getName() + ".", jcacheConfiguration);
+            cm.createCache(com.coolcook.app.domain.IngredientMaster.class.getName() + ".ingredientQtyMappings", jcacheConfiguration);
+            cm.createCache(com.coolcook.app.domain.Quantity.class.getName() + ".ingredientQtyMappings", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

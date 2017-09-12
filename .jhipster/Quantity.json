@@ -1,0 +1,21 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "qty",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "unit",
+            "fieldType": "UnitOfQuantity",
+            "fieldValues": "KILOGRAM,GRAM,LITRE,CUP,TEA_SPOON,TABLE_SPOON,PIECE"
+        }
+    ],
+    "changelogDate": "20170911103105",
+    "entityTableName": "quantity",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "no",
+    "angularJSSuffix": "mySuffix"
+}

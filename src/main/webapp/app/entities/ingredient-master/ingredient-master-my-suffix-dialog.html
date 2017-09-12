@@ -1,0 +1,78 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myIngredientMasterLabel" data-translate="coolcookApp.ingredientMaster.home.createOrEditLabel">Create or edit a Ingredient Master</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.ingredientMaster.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.ingredientMaster.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="coolcookApp.ingredientMaster.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.ingredientMaster.name"
+                    />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setImage($file, vm.ingredientMaster)">
+            <label class="control-label" data-translate="coolcookApp.ingredientMaster.image" for="field_image">Image</label>
+            <div>
+                <div ng-if="vm.ingredientMaster.image" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.ingredientMaster.imageContentType, vm.ingredientMaster.image)" data-translate="entity.action.open">open</a><br>
+                    <span class="pull-left">{{vm.ingredientMaster.imageContentType}}, {{vm.byteSize(vm.ingredientMaster.image)}}</span>
+                    <button type="button" ng-click="vm.ingredientMaster.image=null;vm.ingredientMaster.imageContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setImage($file, vm.ingredientMaster)" data-translate="entity.action.addblob">
+                    Add blob
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="image" id="field_image"
+                    ng-model="vm.ingredientMaster.image"
+                    />
+            <input type="hidden" class="form-control" name="imageContentType" id="field_imageContentType"
+                    ng-model="vm.ingredientMaster.imageContentType" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="coolcookApp.ingredientMaster.unit" for="field_unit">Unit</label>
+            <select class="form-control" name="unit" ng-model="vm.ingredientMaster.unit" id="field_unit">
+                <option value="KILOGRAM" data-translate="coolcookApp.UnitOfQuantity.KILOGRAM">KILOGRAM</option>
+                <option value="GRAM" data-translate="coolcookApp.UnitOfQuantity.GRAM">GRAM</option>
+                <option value="LITRE" data-translate="coolcookApp.UnitOfQuantity.LITRE">LITRE</option>
+                <option value="CUP" data-translate="coolcookApp.UnitOfQuantity.CUP">CUP</option>
+                <option value="TEA_SPOON" data-translate="coolcookApp.UnitOfQuantity.TEA_SPOON">TEA_SPOON</option>
+                <option value="TABLE_SPOON" data-translate="coolcookApp.UnitOfQuantity.TABLE_SPOON">TABLE_SPOON</option>
+                <option value="PIECE" data-translate="coolcookApp.UnitOfQuantity.PIECE">PIECE</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="coolcookApp.ingredientMaster.defaultQty" for="field_defaultQty">Default Qty</label>
+            <input type="number" class="form-control" name="defaultQty" id="field_defaultQty"
+                    ng-model="vm.ingredientMaster.defaultQty"
+                    />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="coolcookApp.ingredientMaster.catagory" for="field_catagory">Catagory</label>
+            <select class="form-control" id="field_catagory" name="catagory" ng-model="vm.ingredientMaster.catagoryId" ng-options="category.id as category.id for category in vm.categories"            >
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

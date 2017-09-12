@@ -1,25 +1,37 @@
 {
     "fluentMethods": true,
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "catagory",
+            "otherEntityName": "category",
+            "otherEntityField": "id"
+        }
+    ],
     "fields": [
         {
-            "fieldName": "ingredientId",
-            "fieldType": "Integer"
-        },
-        {
             "fieldName": "name",
-            "fieldType": "String",
-            "fieldValidateRules": []
+            "fieldType": "String"
         },
         {
             "fieldName": "image",
             "fieldType": "byte[]",
-            "fieldTypeBlobContent": "image"
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "unit",
+            "fieldType": "UnitOfQuantity",
+            "fieldValues": "KILOGRAM,GRAM,LITRE,CUP,TEA_SPOON,TABLE_SPOON,PIECE"
+        },
+        {
+            "fieldName": "defaultQty",
+            "fieldType": "Double"
         }
     ],
     "changelogDate": "20170605120250",
-    "dto": "no",
-    "service": "serviceImpl",
     "entityTableName": "ingredient_master",
-    "pagination": "pagination"
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "angularJSSuffix": "mySuffix"
 }

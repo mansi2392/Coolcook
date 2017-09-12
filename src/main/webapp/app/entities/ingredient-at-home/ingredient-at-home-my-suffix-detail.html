@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span data-translate="coolcookApp.ingredientAtHome.detail.title">Ingredient At Home</span> {{vm.ingredientAtHome.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="coolcookApp.ingredientAtHome.createdAt">Created At</span></dt>
+        <dd>
+            <span>{{vm.ingredientAtHome.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="coolcookApp.ingredientAtHome.updatedAt">Updated At</span></dt>
+        <dd>
+            <span>{{vm.ingredientAtHome.updatedAt | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="coolcookApp.ingredientAtHome.expiryDate">Expiry Date</span></dt>
+        <dd>
+            <span>{{vm.ingredientAtHome.expiryDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="coolcookApp.ingredientAtHome.ingredientQtyMap">Ingredient Qty Map</span></dt>
+        <dd>
+            <a ui-sref="ingredient-qty-mapping-my-suffix-detail({id:vm.ingredientAtHome.ingredientQtyMapId})">{{vm.ingredientAtHome.ingredientQtyMapId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="ingredient-at-home-my-suffix-detail.edit({id:vm.ingredientAtHome.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

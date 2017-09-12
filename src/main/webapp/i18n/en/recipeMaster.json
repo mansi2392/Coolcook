@@ -1,0 +1,30 @@
+{
+    "coolcookApp": {
+        "recipeMaster" : {
+            "home": {
+                "title": "Recipe Masters",
+                "createLabel": "Create a new Recipe Master",
+                "createOrEditLabel": "Create or edit a Recipe Master"
+            },
+            "created": "A new Recipe Master is created with identifier {{ param }}",
+            "updated": "A Recipe Master is updated with identifier {{ param }}",
+            "deleted": "A Recipe Master is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Recipe Master {{ id }}?"
+            },
+            "detail": {
+                "title": "Recipe Master"
+            },
+            "name": "Name",
+            "desc": "Desc",
+            "process": "Process",
+            "durationInMin": "Duration In Min",
+            "image": "Image",
+            "isOriginal": "Is Original",
+            "originalRecipeId": "Original Recipe Id",
+            "isVeg": "Is Veg",
+            "catagory": "Catagory",
+            "ingredientQtyMap": "Ingredient Qty Map"
+        }
+    }
+}

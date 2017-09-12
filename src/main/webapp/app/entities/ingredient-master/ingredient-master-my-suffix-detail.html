@@ -1,0 +1,42 @@
+
+<div>
+    <h2><span data-translate="coolcookApp.ingredientMaster.detail.title">Ingredient Master</span> {{vm.ingredientMaster.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="coolcookApp.ingredientMaster.name">Name</span></dt>
+        <dd>
+            <span>{{vm.ingredientMaster.name}}</span>
+        </dd>
+        <dt><span data-translate="coolcookApp.ingredientMaster.image">Image</span></dt>
+        <dd>
+            <div ng-if="vm.ingredientMaster.image">
+                <a ng-click="vm.openFile(vm.ingredientMaster.imageContentType, vm.ingredientMaster.image)" data-translate="entity.action.open">open</a>
+                {{vm.ingredientMaster.imageContentType}}, {{vm.byteSize(vm.ingredientMaster.image)}}
+            </div>
+        </dd>
+        <dt><span data-translate="coolcookApp.ingredientMaster.unit">Unit</span></dt>
+        <dd>
+            <span data-translate="{{'coolcookApp.UnitOfQuantity.' + vm.ingredientMaster.unit}}">{{vm.ingredientMaster.unit}}</span>
+        </dd>
+        <dt><span data-translate="coolcookApp.ingredientMaster.defaultQty">Default Qty</span></dt>
+        <dd>
+            <span>{{vm.ingredientMaster.defaultQty}}</span>
+        </dd>
+        <dt><span data-translate="coolcookApp.ingredientMaster.catagory">Catagory</span></dt>
+        <dd>
+            <a ui-sref="category-my-suffix-detail({id:vm.ingredientMaster.catagoryId})">{{vm.ingredientMaster.catagoryId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="ingredient-master-my-suffix-detail.edit({id:vm.ingredientMaster.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

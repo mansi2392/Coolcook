@@ -6,6 +6,15 @@
 
     <include file="classpath:config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170605120250_added_entity_IngredientMaster.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170911103103_added_entity_IngredientAtHome.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170911103104_added_entity_Category.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170911103105_added_entity_Quantity.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170911103106_added_entity_RecipeMaster.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170911103107_added_entity_IngredientQtyMapping.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="classpath:config/liquibase/changelog/20170605120250_added_entity_constraints_IngredientMaster.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170911103103_added_entity_constraints_IngredientAtHome.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170911103106_added_entity_constraints_RecipeMaster.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170911103107_added_entity_constraints_IngredientQtyMapping.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

@@ -1,0 +1,27 @@
+
+<div>
+    <h2><span data-translate="coolcookApp.ingredientQtyMapping.detail.title">Ingredient Qty Mapping</span> {{vm.ingredientQtyMapping.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="coolcookApp.ingredientQtyMapping.qty">Qty</span></dt>
+        <dd>
+            <a ui-sref="quantity-my-suffix-detail({id:vm.ingredientQtyMapping.qtyId})">{{vm.ingredientQtyMapping.qtyId}}</a>
+        </dd>
+        <dt><span data-translate="coolcookApp.ingredientQtyMapping.ingredient">Ingredient</span></dt>
+        <dd>
+            <a ui-sref="ingredient-master-my-suffix-detail({id:vm.ingredientQtyMapping.ingredientId})">{{vm.ingredientQtyMapping.ingredientId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="ingredient-qty-mapping-my-suffix-detail.edit({id:vm.ingredientQtyMapping.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

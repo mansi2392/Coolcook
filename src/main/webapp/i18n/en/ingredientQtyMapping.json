@@ -1,0 +1,22 @@
+{
+    "coolcookApp": {
+        "ingredientQtyMapping" : {
+            "home": {
+                "title": "Ingredient Qty Mappings",
+                "createLabel": "Create a new Ingredient Qty Mapping",
+                "createOrEditLabel": "Create or edit a Ingredient Qty Mapping"
+            },
+            "created": "A new Ingredient Qty Mapping is created with identifier {{ param }}",
+            "updated": "A Ingredient Qty Mapping is updated with identifier {{ param }}",
+            "deleted": "A Ingredient Qty Mapping is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Ingredient Qty Mapping {{ id }}?"
+            },
+            "detail": {
+                "title": "Ingredient Qty Mapping"
+            },
+            "qty": "Qty",
+            "ingredient": "Ingredient"
+        }
+    }
+}

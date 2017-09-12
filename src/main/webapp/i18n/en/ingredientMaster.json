@@ -15,9 +15,11 @@
             "detail": {
                 "title": "Ingredient Master"
             },
-            "ingredientId": "Ingredient Id",
             "name": "Name",
-            "image": "Image"
+            "image": "Image",
+            "unit": "Unit",
+            "defaultQty": "Default Qty",
+            "catagory": "Catagory"
         }
     }
 }

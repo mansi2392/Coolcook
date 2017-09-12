@@ -1,0 +1,60 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "catagory",
+            "otherEntityName": "category",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "",
+            "relationshipName": "ingredientQtyMap",
+            "otherEntityName": "ingredientQtyMapping",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "desc",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "process",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "durationInMin",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "image",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "isOriginal",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "originalRecipeId",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "isVeg",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20170911103106",
+    "entityTableName": "recipe_master",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "angularJSSuffix": "mySuffix"
+}
