@@ -62,7 +62,7 @@
 
         <div class="form-group">
             <label data-translate="coolcookApp.ingredientMaster.catagory" for="field_catagory">Catagory</label>
-            <select class="form-control" id="field_catagory" name="catagory" ng-model="vm.ingredientMaster.catagoryId" ng-options="category.id as category.id for category in vm.categories"            >
+            <select class="form-control" id="field_catagory" name="catagory" ng-model="vm.ingredientMaster.catagoryId" ng-options="category.id as category.categoryName for category in vm.categories"            >
                 <option value=""></option>
             </select>
         </div>

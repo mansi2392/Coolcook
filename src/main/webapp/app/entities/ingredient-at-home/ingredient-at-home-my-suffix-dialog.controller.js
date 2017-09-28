@@ -20,6 +20,8 @@
         vm.ingredientqtymappings = IngredientQtyMapping.query();
         vm.ingredients = IngredientMaster.query();
         
+        vm.ingredientAtHome.createdAt = new Date();
+        
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
         });

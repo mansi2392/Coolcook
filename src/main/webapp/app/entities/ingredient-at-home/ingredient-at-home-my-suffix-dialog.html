@@ -19,12 +19,12 @@
                             <option value=""></option>
                         </select>-->
             <label data-translate="">Name</label>
-            <input type="text" ng-model="selectedIngredient" uib-typeahead="ingredient for ingredient in ingredients | filter:$viewValue | limitTo:8" 
+            <input type="text" ng-model="selectedIngredient" uib-typeahead="ingredient as ingredient.name for ingredient in vm.ingredients | filter:$viewValue | limitTo:8" 
                    class="form-control">
 
             <label data-translate="">Quantity</label>
-            <input type="number" ng-model="selectedIngredient.default_qty" class="form-control">
-            <input type="number" ng-model="selectedIngredient.unit" class="form-control">
+            <input type="number" ng-model="selectedIngredient.defaultQty" class="form-control">
+            <input type="text" ng-model="selectedIngredient.unit" class="form-control">
 <!--            <select class="form-control" id="field_Quantity" name="quantity" ng-model="selectedIngredient.default_qty" ng-options="ingredientQtyMapping.id as ingredientQtyMapping.id for ingredientQtyMapping in vm.ingredientqtymappings"            >
                 <option value=""></option>
             </select>-->
