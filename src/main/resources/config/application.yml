@@ -23,7 +23,7 @@ management:
             enabled: false # When using the MailService, configure an SMTP server and set this to true
 spring:
     application:
-        name: coolcook
+        name: Coolcook
     profiles:
         # The commented value for `active` can be replaced with valid Spring profiles to load.
         # Otherwise, it will be filled in by maven when building the WAR file
@@ -45,6 +45,23 @@ spring:
             enabled: false
     thymeleaf:
         mode: XHTML
+    social:
+        # see https://developers.google.com/+/web/signin/server-side-flow#step_1_create_a_client_id_and_client_secret
+        google:
+            client-id: xxx
+            client-secret: xxx
+
+        # see https://developers.facebook.com/docs/facebook-login/v2.2
+        facebook:
+            client-id: xxx
+            client-secret: xxx
+
+        # see https://apps.twitter.com/app/
+        twitter:
+            client-id: xxx
+            client-secret: xxx
+
+        # jhipster-needle-add-social-configuration
 
 security:
     basic:
@@ -79,11 +96,11 @@ jhipster:
         #allow-credentials: true
         #max-age: 1800
     mail:
-        from: coolcook@localhost
+        from: Coolcook@localhost
     swagger:
         default-include-pattern: /api/.*
-        title: coolcook API
-        description: coolcook API documentation
+        title: Coolcook API
+        description: Coolcook API documentation
         version: 0.0.1
         terms-of-service-url:
         contact-name:
@@ -91,6 +108,8 @@ jhipster:
         contact-email:
         license:
         license-url:
+    social:
+        redirect-after-sign-in: "/#/social-auth"
     ribbon:
         display-on-active-profiles: dev
 

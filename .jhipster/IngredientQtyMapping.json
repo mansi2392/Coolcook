@@ -15,7 +15,7 @@
         }
     ],
     "fields": [],
-    "changelogDate": "20170911103107",
+    "changelogDate": "20171005114042",
     "entityTableName": "ingredient_qty_mapping",
     "dto": "mapstruct",
     "pagination": "no",

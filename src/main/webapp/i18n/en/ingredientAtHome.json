@@ -4,7 +4,8 @@
             "home": {
                 "title": "Ingredient At Homes",
                 "createLabel": "Create a new Ingredient At Home",
-                "createOrEditLabel": "Create or edit a Ingredient At Home"
+                "createOrEditLabel": "Create or edit a Ingredient At Home",
+                "search": "Search for Ingredient At Home"
             },
             "created": "A new Ingredient At Home is created with identifier {{ param }}",
             "updated": "A Ingredient At Home is updated with identifier {{ param }}",

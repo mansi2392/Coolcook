@@ -16,14 +16,14 @@
 
 spring:
     application:
-        name: coolcook
+        name: Coolcook
     jackson:
         serialization.write_dates_as_timestamps: false
     cache:
         type: none
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:h2:mem:coolcook;DB_CLOSE_DELAY=-1
+        url: jdbc:h2:mem:Coolcook;DB_CLOSE_DELAY=-1
         name:
         username:
         password:
@@ -43,6 +43,14 @@ spring:
             hibernate.cache.use_query_cache: false
             hibernate.generate_statistics: true
             hibernate.hbm2ddl.auto: validate
+    data:
+        elasticsearch:
+            cluster-name:
+            cluster-nodes:
+            properties:
+                path:
+                    logs: target/elasticsearch/log
+                    data: target/elasticsearch/data
     mail:
         host: localhost
     messages:
@@ -86,9 +94,11 @@ jhipster:
         from: test@localhost
         base-url: http://127.0.0.1:8080
     security:
-        remember-me:
-            # security key (this key should be unique for your application, and kept secret)
-            key: a9c96ce47977eba961056b1a0a265c4a2c1db12b
+        authentication:
+            jwt:
+                secret: 7dadcc01b0f66d56ea1af5718c8d45736201853d
+                # Token is valid 24 hours
+                token-validity-in-seconds: 86400
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx.enabled: true
         logs: # Reports Dropwizard metrics in the logs

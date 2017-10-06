@@ -1,7 +1,7 @@
 {
   "name": "coolcook",
   "version": "0.0.0",
-  "description": "Description for coolcook",
+  "description": "Description for Coolcook",
   "private": true,
   "cacheDirectories": [
     "node_modules",

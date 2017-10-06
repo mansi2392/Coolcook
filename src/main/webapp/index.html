@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>coolcook</title>
+    <title>Coolcook</title>
     <meta name="description" content="">
     <meta name="google" value="notranslate">
     <meta name="viewport" content="width=device-width">
@@ -77,7 +77,6 @@
     <script src="app/services/user/user.service.js"></script>
     <script src="app/services/profiles/profile.service.js"></script>
     <script src="app/services/profiles/page-ribbon.directive.js"></script>
-    <script src="app/services/auth/sessions.service.js"></script>
     <script src="app/services/auth/register.service.js"></script>
     <script src="app/services/auth/principal.service.js"></script>
     <script src="app/services/auth/password-reset-init.service.js"></script>
@@ -85,8 +84,8 @@
     <script src="app/services/auth/password.service.js"></script>
     <script src="app/services/auth/has-authority.directive.js"></script>
     <script src="app/services/auth/has-any-authority.directive.js"></script>
-    <script src="app/services/auth/auth.session.service.js"></script>
     <script src="app/services/auth/auth.service.js"></script>
+    <script src="app/services/auth/auth.jwt.service.js"></script>
     <script src="app/services/auth/activate.service.js"></script>
     <script src="app/services/auth/account.service.js"></script>
     <script src="app/layouts/navbar/navbar.controller.js"></script>
@@ -99,36 +98,35 @@
     <script src="app/entities/recipe-master/recipe-master-my-suffix-delete-dialog.controller.js"></script>
     <script src="app/entities/recipe-master/recipe-master-my-suffix.state.js"></script>
     <script src="app/entities/recipe-master/recipe-master-my-suffix.service.js"></script>
+    <script src="app/entities/recipe-master/recipe-master-my-suffix.search.service.js"></script>
     <script src="app/entities/recipe-master/recipe-master-my-suffix.controller.js"></script>
     <script src="app/entities/quantity/quantity-my-suffix-dialog.controller.js"></script>
     <script src="app/entities/quantity/quantity-my-suffix-detail.controller.js"></script>
     <script src="app/entities/quantity/quantity-my-suffix-delete-dialog.controller.js"></script>
     <script src="app/entities/quantity/quantity-my-suffix.state.js"></script>
     <script src="app/entities/quantity/quantity-my-suffix.service.js"></script>
+    <script src="app/entities/quantity/quantity-my-suffix.search.service.js"></script>
     <script src="app/entities/quantity/quantity-my-suffix.controller.js"></script>
     <script src="app/entities/ingredient-qty-mapping/ingredient-qty-mapping-my-suffix-dialog.controller.js"></script>
     <script src="app/entities/ingredient-qty-mapping/ingredient-qty-mapping-my-suffix-detail.controller.js"></script>
     <script src="app/entities/ingredient-qty-mapping/ingredient-qty-mapping-my-suffix-delete-dialog.controller.js"></script>
     <script src="app/entities/ingredient-qty-mapping/ingredient-qty-mapping-my-suffix.state.js"></script>
     <script src="app/entities/ingredient-qty-mapping/ingredient-qty-mapping-my-suffix.service.js"></script>
+    <script src="app/entities/ingredient-qty-mapping/ingredient-qty-mapping-my-suffix.search.service.js"></script>
     <script src="app/entities/ingredient-qty-mapping/ingredient-qty-mapping-my-suffix.controller.js"></script>
     <script src="app/entities/ingredient-master/ingredient-master-my-suffix-dialog.controller.js"></script>
     <script src="app/entities/ingredient-master/ingredient-master-my-suffix-detail.controller.js"></script>
     <script src="app/entities/ingredient-master/ingredient-master-my-suffix-delete-dialog.controller.js"></script>
     <script src="app/entities/ingredient-master/ingredient-master-my-suffix.state.js"></script>
     <script src="app/entities/ingredient-master/ingredient-master-my-suffix.service.js"></script>
+    <script src="app/entities/ingredient-master/ingredient-master-my-suffix.search.service.js"></script>
     <script src="app/entities/ingredient-master/ingredient-master-my-suffix.controller.js"></script>
-    <script src="app/entities/ingredient-master/ingredient-master-dialog.controller.js"></script>
-    <script src="app/entities/ingredient-master/ingredient-master-detail.controller.js"></script>
-    <script src="app/entities/ingredient-master/ingredient-master-delete-dialog.controller.js"></script>
-    <script src="app/entities/ingredient-master/ingredient-master.state.js"></script>
-    <script src="app/entities/ingredient-master/ingredient-master.service.js"></script>
-    <script src="app/entities/ingredient-master/ingredient-master.controller.js"></script>
     <script src="app/entities/ingredient-at-home/ingredient-at-home-my-suffix-dialog.controller.js"></script>
     <script src="app/entities/ingredient-at-home/ingredient-at-home-my-suffix-detail.controller.js"></script>
     <script src="app/entities/ingredient-at-home/ingredient-at-home-my-suffix-delete-dialog.controller.js"></script>
     <script src="app/entities/ingredient-at-home/ingredient-at-home-my-suffix.state.js"></script>
     <script src="app/entities/ingredient-at-home/ingredient-at-home-my-suffix.service.js"></script>
+    <script src="app/entities/ingredient-at-home/ingredient-at-home-my-suffix.search.service.js"></script>
     <script src="app/entities/ingredient-at-home/ingredient-at-home-my-suffix.controller.js"></script>
     <script src="app/entities/entity.state.js"></script>
     <script src="app/entities/category/category-my-suffix-dialog.controller.js"></script>
@@ -136,6 +134,7 @@
     <script src="app/entities/category/category-my-suffix-delete-dialog.controller.js"></script>
     <script src="app/entities/category/category-my-suffix.state.js"></script>
     <script src="app/entities/category/category-my-suffix.service.js"></script>
+    <script src="app/entities/category/category-my-suffix.search.service.js"></script>
     <script src="app/entities/category/category-my-suffix.controller.js"></script>
     <script src="app/components/util/truncate-words.filter.js"></script>
     <script src="app/components/util/truncate-characters.filter.js"></script>
@@ -164,6 +163,7 @@
     <script src="app/blocks/interceptor/notification.interceptor.js"></script>
     <script src="app/blocks/interceptor/errorhandler.interceptor.js"></script>
     <script src="app/blocks/interceptor/auth-expired.interceptor.js"></script>
+    <script src="app/blocks/interceptor/auth.interceptor.js"></script>
     <script src="app/blocks/handlers/translation.handler.js"></script>
     <script src="app/blocks/handlers/state.handler.js"></script>
     <script src="app/blocks/config/uib-pagination.config.js"></script>
@@ -200,10 +200,13 @@
     <script src="app/admin/audits/audits.service.js"></script>
     <script src="app/admin/audits/audits.controller.js"></script>
     <script src="app/admin/admin.state.js"></script>
+    <script src="app/account/social/social-register.controller.js"></script>
+    <script src="app/account/social/social-auth.controller.js"></script>
+    <script src="app/account/social/social.state.js"></script>
+    <script src="app/account/social/social.service.js"></script>
+    <script src="app/account/social/directive/social.directive.js"></script>
     <script src="app/account/settings/settings.state.js"></script>
     <script src="app/account/settings/settings.controller.js"></script>
-    <script src="app/account/sessions/sessions.state.js"></script>
-    <script src="app/account/sessions/sessions.controller.js"></script>
     <script src="app/account/reset/request/reset.request.state.js"></script>
     <script src="app/account/reset/request/reset.request.controller.js"></script>
     <script src="app/account/reset/finish/reset.finish.state.js"></script>

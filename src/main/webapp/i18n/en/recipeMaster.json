@@ -4,7 +4,8 @@
             "home": {
                 "title": "Recipe Masters",
                 "createLabel": "Create a new Recipe Master",
-                "createOrEditLabel": "Create or edit a Recipe Master"
+                "createOrEditLabel": "Create or edit a Recipe Master",
+                "search": "Search for Recipe Master"
             },
             "created": "A new Recipe Master is created with identifier {{ param }}",
             "updated": "A Recipe Master is updated with identifier {{ param }}",

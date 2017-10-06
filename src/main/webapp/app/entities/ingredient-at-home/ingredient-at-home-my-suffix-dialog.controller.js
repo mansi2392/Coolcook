@@ -5,11 +5,9 @@
         .module('coolcookApp')
         .controller('IngredientAtHomeMySuffixDialogController', IngredientAtHomeMySuffixDialogController);
 
-    IngredientAtHomeMySuffixDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 
-        'IngredientAtHome', 'IngredientQtyMapping', 'IngredientMaster'];
+    IngredientAtHomeMySuffixDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'IngredientAtHome', 'IngredientQtyMapping'];
 
-    function IngredientAtHomeMySuffixDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, IngredientAtHome, 
-    IngredientQtyMapping, IngredientMaster) {
+    function IngredientAtHomeMySuffixDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, IngredientAtHome, IngredientQtyMapping) {
         var vm = this;
 
         vm.ingredientAtHome = entity;
@@ -19,7 +17,7 @@
         vm.save = save;
         vm.ingredientqtymappings = IngredientQtyMapping.query();
         vm.ingredients = IngredientMaster.query();
-        
+
         vm.ingredientAtHome.createdAt = new Date();
         
         $timeout(function (){

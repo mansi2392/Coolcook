@@ -12,7 +12,7 @@
             "fieldValues": "KILOGRAM,GRAM,LITRE,CUP,TEA_SPOON,TABLE_SPOON,PIECE"
         }
     ],
-    "changelogDate": "20170911103105",
+    "changelogDate": "20171005114040",
     "entityTableName": "quantity",
     "dto": "mapstruct",
     "pagination": "no",

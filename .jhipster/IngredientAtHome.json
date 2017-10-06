@@ -22,7 +22,7 @@
             "fieldType": "ZonedDateTime"
         }
     ],
-    "changelogDate": "20170911103103",
+    "changelogDate": "20171005114038",
     "entityTableName": "ingredient_at_home",
     "dto": "mapstruct",
     "pagination": "pagination",

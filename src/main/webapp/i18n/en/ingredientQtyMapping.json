@@ -4,7 +4,8 @@
             "home": {
                 "title": "Ingredient Qty Mappings",
                 "createLabel": "Create a new Ingredient Qty Mapping",
-                "createOrEditLabel": "Create or edit a Ingredient Qty Mapping"
+                "createOrEditLabel": "Create or edit a Ingredient Qty Mapping",
+                "search": "Search for Ingredient Qty Mapping"
             },
             "created": "A new Ingredient Qty Mapping is created with identifier {{ param }}",
             "updated": "A Ingredient Qty Mapping is updated with identifier {{ param }}",

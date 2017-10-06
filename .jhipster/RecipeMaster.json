@@ -51,7 +51,7 @@
             "fieldType": "Boolean"
         }
     ],
-    "changelogDate": "20170911103106",
+    "changelogDate": "20171005114041",
     "entityTableName": "recipe_master",
     "dto": "mapstruct",
     "pagination": "pagination",

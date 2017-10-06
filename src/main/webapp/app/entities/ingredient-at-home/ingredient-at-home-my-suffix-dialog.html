@@ -11,7 +11,7 @@
         <div class="form-group" ng-show="vm.ingredientAtHome.id">
             <label for="id" data-translate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
-                   ng-model="vm.ingredientAtHome.id" readonly />
+                    ng-model="vm.ingredientAtHome.id" readonly />
         </div>
         <div class="form-group">
             <!--            <label data-translate="coolcookApp.ingredientAtHome.ingredientQtyMap" for="field_ingredientQtyMap">Ingredient Qty Map</label>
@@ -31,36 +31,41 @@
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="coolcookApp.ingredientAtHome.createdAt" for="field_createdAt">Created At</label>
-            <div class="input-group">
-                <input id="field_createdAt" type="text" class="form-control" name="createdAt" datetime-picker="{{dateformat}}" ng-model="vm.ingredientAtHome.createdAt" is-open="vm.datePickerOpenStatus.createdAt"
-                       />
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-default" ng-click="vm.openCalendar('createdAt')"><i class="glyphicon glyphicon-calendar"></i></button>
-                </span>
-            </div>
+                <div class="input-group">
+                    <input id="field_createdAt" type="text" class="form-control" name="createdAt" datetime-picker="{{dateformat}}" ng-model="vm.ingredientAtHome.createdAt" is-open="vm.datePickerOpenStatus.createdAt"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('createdAt')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="coolcookApp.ingredientAtHome.updatedAt" for="field_updatedAt">Updated At</label>
-            <div class="input-group">
-                <input id="field_updatedAt" type="text" class="form-control" name="updatedAt" datetime-picker="{{dateformat}}" ng-model="vm.ingredientAtHome.updatedAt" is-open="vm.datePickerOpenStatus.updatedAt"
-                       />
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-default" ng-click="vm.openCalendar('updatedAt')"><i class="glyphicon glyphicon-calendar"></i></button>
-                </span>
-            </div>
+                <div class="input-group">
+                    <input id="field_updatedAt" type="text" class="form-control" name="updatedAt" datetime-picker="{{dateformat}}" ng-model="vm.ingredientAtHome.updatedAt" is-open="vm.datePickerOpenStatus.updatedAt"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('updatedAt')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="coolcookApp.ingredientAtHome.expiryDate" for="field_expiryDate">Expiry Date</label>
-            <div class="input-group">
-                <input id="field_expiryDate" type="text" class="form-control" name="expiryDate" datetime-picker="{{dateformat}}" ng-model="vm.ingredientAtHome.expiryDate" is-open="vm.datePickerOpenStatus.expiryDate"
-                       />
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-default" ng-click="vm.openCalendar('expiryDate')"><i class="glyphicon glyphicon-calendar"></i></button>
-                </span>
-            </div>
+                <div class="input-group">
+                    <input id="field_expiryDate" type="text" class="form-control" name="expiryDate" datetime-picker="{{dateformat}}" ng-model="vm.ingredientAtHome.expiryDate" is-open="vm.datePickerOpenStatus.expiryDate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('expiryDate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
         </div>
 
-
+        <div class="form-group">
+            <label data-translate="coolcookApp.ingredientAtHome.ingredientQtyMap" for="field_ingredientQtyMap">Ingredient Qty Map</label>
+            <select class="form-control" id="field_ingredientQtyMap" name="ingredientQtyMap" ng-model="vm.ingredientAtHome.ingredientQtyMapId" ng-options="ingredientQtyMapping.id as ingredientQtyMapping.id for ingredientQtyMapping in vm.ingredientqtymappings"            >
+                <option value=""></option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

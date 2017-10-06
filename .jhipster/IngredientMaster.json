@@ -28,7 +28,7 @@
             "fieldType": "Double"
         }
     ],
-    "changelogDate": "20170605120250",
+    "changelogDate": "20171005114037",
     "entityTableName": "ingredient_master",
     "dto": "mapstruct",
     "pagination": "pagination",

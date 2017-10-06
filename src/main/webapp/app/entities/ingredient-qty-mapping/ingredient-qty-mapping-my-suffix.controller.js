@@ -5,13 +5,16 @@
         .module('coolcookApp')
         .controller('IngredientQtyMappingMySuffixController', IngredientQtyMappingMySuffixController);
 
-    IngredientQtyMappingMySuffixController.$inject = ['IngredientQtyMapping'];
+    IngredientQtyMappingMySuffixController.$inject = ['IngredientQtyMapping', 'IngredientQtyMappingSearch'];
 
-    function IngredientQtyMappingMySuffixController(IngredientQtyMapping) {
+    function IngredientQtyMappingMySuffixController(IngredientQtyMapping, IngredientQtyMappingSearch) {
 
         var vm = this;
 
         vm.ingredientQtyMappings = [];
+        vm.clear = clear;
+        vm.search = search;
+        vm.loadAll = loadAll;
 
         loadAll();
 
@@ -21,5 +24,19 @@
                 vm.searchQuery = null;
             });
         }
-    }
+
+        function search() {
+            if (!vm.searchQuery) {
+                return vm.loadAll();
+            }
+            IngredientQtyMappingSearch.query({query: vm.searchQuery}, function(result) {
+                vm.ingredientQtyMappings = result;
+                vm.currentSearch = vm.searchQuery;
+            });
+        }
+
+        function clear() {
+            vm.searchQuery = null;
+            loadAll();
+        }    }
 })();

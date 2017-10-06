@@ -4,7 +4,8 @@
             "home": {
                 "title": "Ingredient Masters",
                 "createLabel": "Create a new Ingredient Master",
-                "createOrEditLabel": "Create or edit a Ingredient Master"
+                "createOrEditLabel": "Create or edit a Ingredient Master",
+                "search": "Search for Ingredient Master"
             },
             "created": "A new Ingredient Master is created with identifier {{ param }}",
             "updated": "A Ingredient Master is updated with identifier {{ param }}",
