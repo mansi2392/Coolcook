@@ -113,6 +113,22 @@ public class IngredientMasterResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(ingredientMasterDTO));
     }
 
+     /**
+     * GET  /ingredient-masters/:categoryName : get the ingredientMaster by category.
+     *
+     * @param categoryName
+     * @param pageable
+     * @return the ResponseEntity with status 200 (OK) and with body the ingredientMasterDTO, or with status 404 (Not Found)
+     */
+    @GetMapping("/ingredient-masters/category/{categoryName}")
+    @Timed
+    public ResponseEntity<List<IngredientMasterDTO>> getIngredientMasterByCategory(@PathVariable String categoryName, @ApiParam Pageable pageable) {
+        log.debug("REST request to get IngredientMaster : {}", categoryName);
+        Page<IngredientMasterDTO> ingredientByCategory = ingredientMasterService.getIngredientByCategory(categoryName, pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ingredientByCategory, "/apiingredient-masters/category/"+categoryName);
+        return new ResponseEntity<>(ingredientByCategory.getContent(), headers, HttpStatus.OK);
+    }
+    
     /**
      * DELETE  /ingredient-masters/:id : delete the "id" ingredientMaster.
      *

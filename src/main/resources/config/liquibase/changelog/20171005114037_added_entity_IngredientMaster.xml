@@ -41,7 +41,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="catagory_id" type="bigint">
+            <column name="category_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 

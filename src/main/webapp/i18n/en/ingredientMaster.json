@@ -20,7 +20,7 @@
             "image": "Image",
             "unit": "Unit",
             "defaultQty": "Default Qty",
-            "catagory": "Catagory"
+            "category": "Category"
         }
     }
 }

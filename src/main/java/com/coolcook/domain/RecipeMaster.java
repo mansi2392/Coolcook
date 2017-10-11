@@ -54,7 +54,7 @@ public class RecipeMaster implements Serializable {
     private Boolean isVeg;
 
     @ManyToOne
-    private Category catagory;
+    private Category category;
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -188,17 +188,17 @@ public class RecipeMaster implements Serializable {
         this.isVeg = isVeg;
     }
 
-    public Category getCatagory() {
-        return catagory;
+    public Category getCategory() {
+        return category;
     }
 
-    public RecipeMaster catagory(Category category) {
-        this.catagory = category;
+    public RecipeMaster category(Category category) {
+        this.category = category;
         return this;
     }
 
-    public void setCatagory(Category category) {
-        this.catagory = category;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public Set<IngredientQtyMapping> getIngredientQtyMaps() {

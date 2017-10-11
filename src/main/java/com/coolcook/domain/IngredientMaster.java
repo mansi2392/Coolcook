@@ -43,7 +43,7 @@ public class IngredientMaster implements Serializable {
     private Double defaultQty;
 
     @ManyToOne
-    private Category catagory;
+    private Category category;
 
     public Long getId() {
         return id;
@@ -118,17 +118,17 @@ public class IngredientMaster implements Serializable {
         this.defaultQty = defaultQty;
     }
 
-    public Category getCatagory() {
-        return catagory;
+    public Category getCategory() {
+        return category;
     }
 
-    public IngredientMaster catagory(Category category) {
-        this.catagory = category;
+    public IngredientMaster category(Category category) {
+        this.category = category;
         return this;
     }
 
-    public void setCatagory(Category category) {
-        this.catagory = category;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @Override

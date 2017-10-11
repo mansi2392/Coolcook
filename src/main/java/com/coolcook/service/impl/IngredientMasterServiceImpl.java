@@ -1,5 +1,6 @@
 package com.coolcook.service.impl;
 
+import com.coolcook.domain.Category;
 import com.coolcook.service.IngredientMasterService;
 import com.coolcook.domain.IngredientMaster;
 import com.coolcook.repository.IngredientMasterRepository;
@@ -105,6 +106,14 @@ public class IngredientMasterServiceImpl implements IngredientMasterService{
     public Page<IngredientMasterDTO> search(String query, Pageable pageable) {
         log.debug("Request to search for a page of IngredientMasters for query {}", queryStringQuery(query));
         Page<IngredientMaster> result = ingredientMasterSearchRepository.search(queryStringQuery(query), pageable);
+        return result.map(ingredientMasterMapper::toDto);
+    }
+
+    @Override
+    public Page<IngredientMasterDTO> getIngredientByCategory(String categoryName, Pageable pageable) {
+        Category category=new Category();
+        category.setCategoryName(categoryName);
+        Page<IngredientMaster> result = ingredientMasterRepository.findByCategory(category, pageable);
         return result.map(ingredientMasterMapper::toDto);
     }
 }

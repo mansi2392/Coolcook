@@ -24,7 +24,7 @@
             "isOriginal": "Is Original",
             "originalRecipeId": "Original Recipe Id",
             "isVeg": "Is Veg",
-            "catagory": "Catagory",
+            "category": "Category",
             "ingredientQtyMap": "Ingredient Qty Map"
         }
     }

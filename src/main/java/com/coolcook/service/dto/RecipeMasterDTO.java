@@ -32,7 +32,7 @@ public class RecipeMasterDTO implements Serializable {
 
     private Boolean isVeg;
 
-    private Long catagoryId;
+    private Long categoryId;
 
     private Set<IngredientQtyMappingDTO> ingredientQtyMaps = new HashSet<>();
 
@@ -116,12 +116,12 @@ public class RecipeMasterDTO implements Serializable {
         this.isVeg = isVeg;
     }
 
-    public Long getCatagoryId() {
-        return catagoryId;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setCatagoryId(Long categoryId) {
-        this.catagoryId = categoryId;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 
     public Set<IngredientQtyMappingDTO> getIngredientQtyMaps() {

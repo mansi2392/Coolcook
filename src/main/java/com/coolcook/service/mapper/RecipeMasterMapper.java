@@ -11,10 +11,10 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring", uses = {CategoryMapper.class, IngredientQtyMappingMapper.class, })
 public interface RecipeMasterMapper extends EntityMapper <RecipeMasterDTO, RecipeMaster> {
 
-    @Mapping(source = "catagory.id", target = "catagoryId")
+    @Mapping(source = "category.id", target = "categoryId")
     RecipeMasterDTO toDto(RecipeMaster recipeMaster); 
 
-    @Mapping(source = "catagoryId", target = "catagory")
+    @Mapping(source = "categoryId", target = "category")
     RecipeMaster toEntity(RecipeMasterDTO recipeMasterDTO); 
     default RecipeMaster fromId(Long id) {
         if (id == null) {

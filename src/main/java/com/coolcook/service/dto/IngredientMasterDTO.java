@@ -25,7 +25,7 @@ public class IngredientMasterDTO implements Serializable {
 
     private Double defaultQty;
 
-    private Long catagoryId;
+    private Long categoryId;
 
     public Long getId() {
         return id;
@@ -75,12 +75,12 @@ public class IngredientMasterDTO implements Serializable {
         this.defaultQty = defaultQty;
     }
 
-    public Long getCatagoryId() {
-        return catagoryId;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setCatagoryId(Long categoryId) {
-        this.catagoryId = categoryId;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 
     @Override

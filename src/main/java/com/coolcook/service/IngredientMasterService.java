@@ -49,4 +49,14 @@ public interface IngredientMasterService {
      *  @return the list of entities
      */
     Page<IngredientMasterDTO> search(String query, Pageable pageable);
+    
+     /**
+     * Find the ingredientMaster by category.
+     *
+     *  @param categoryName the name of category
+     *  
+     *  @param pageable the pagination information
+     *  @return the list of entities
+     */
+    Page<IngredientMasterDTO> getIngredientByCategory(String categoryName, Pageable pageable);
 }
